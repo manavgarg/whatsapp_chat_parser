@@ -36,12 +36,18 @@ def plotMsgExchange():
 				msgX[monthStr][user] += 1
 			else:
 				msgX[monthStr][user] = 0
-	index = msgX.keys()
+	user_vals = defaultdict(list)
+	index = []
+	for key in msgX:
+		index.append(key)
+		for user in msgX[key]:
+			user_vals[user].append(msgX[key][user])
 	plt.figure()
 	plt.xlabel('month')
 	plt.ylabel('msg_exchanged')
 	for user in users:
-		plt.plot(index,[msgX[t][user] for t in index], label=user)
+		plt.plot(index,user_vals[user], label=user)
+	plt.legend()
 	plt.show()
 
 
