@@ -42,14 +42,14 @@ def plotMsgExchange():
 		index.append(key)
 		for user in msgX[key]:
 			user_vals[user].append(msgX[key][user])
-	plt.figure()
+	plt.figure(figsize=(12,5))
 	plt.xlabel('month')
 	plt.ylabel('msg_exchanged')
 	for user in users:
 		plt.plot(index,user_vals[user], label=user)
 	plt.legend()
+	# plt.savefig("msgX.png")
 	plt.show()
-
 
 if __name__ == '__main__':
 	fd = open("../_chat.txt",mode='r',encoding='utf8', newline='\r\n')
