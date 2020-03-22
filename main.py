@@ -10,7 +10,7 @@ def plotWordCloud(k=50):
 	for user in users:
 		words = ""
 		for tup in users[user]:
-			words += " " + tup[2]
+			words += " " + tup[2].lower()
 		wordcloud = WordCloud(width=480, height=480, max_words=k).generate(words)
 		# plot the WordCloud image  
 		plt.figure()
@@ -18,11 +18,11 @@ def plotWordCloud(k=50):
 		plt.imshow(wordcloud, interpolation="bilinear") 
 		plt.axis("off") 
 		plt.margins(x=0, y=0) 
-		plt.show() 	
-
+		plt.show()
+		#plt.savefig(user+".png")
 
 if __name__ == '__main__':
-	fd= open("../_chat.txt",mode='r',encoding='utf8', newline='\r\n')
+	fd = open("../_chat.txt",mode='r',encoding='utf8', newline='\r\n')
 	for i, line in enumerate(fd):   
 		date = line.split(",")[0].split("[")[1]
 		time = line.split(",")[1].split("]")[0]
